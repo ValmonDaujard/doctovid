@@ -5,30 +5,21 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Adresse {
 	
-	private Long id;
-	private int version;
 	private String rue;
+	private String complement;
 	private String cp;
 	private String ville;
 
 	public Adresse() {
 		super();
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public int getVersion() {
-		return version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
+	
+	public Adresse(String rue, String complement, String cp, String ville) {
+		super();
+		this.rue = rue;
+		this.complement = complement;
+		this.cp = cp;
+		this.ville = ville;
 	}
 
 	public String getRue() {
@@ -37,6 +28,14 @@ public class Adresse {
 
 	public void setRue(String rue) {
 		this.rue = rue;
+	}
+	
+	public String getComplement() {
+		return complement;
+	}
+
+	public void setComplement(String complement) {
+		this.complement = complement;
 	}
 
 	public String getCp() {

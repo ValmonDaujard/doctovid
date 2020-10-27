@@ -22,55 +22,57 @@ public class Motif {
 	private Type type;
 	private int nbCreneau;
 	@ManyToMany
-	@JoinTable(name = "motif_lieuConsult",
-	joinColumns = @JoinColumn(name = "motif_id", referencedColumnName = "id"),
-	inverseJoinColumns = @JoinColumn (name = "lieuConsult_id", referencedColumnName = "id"))
-	private List<LieuConsult> mesLieux  = new ArrayList<LieuConsult>();
-	
-	
+	@JoinTable(name = "motif_lieuConsult", joinColumns = @JoinColumn(name = "motif_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "lieuConsult_id", referencedColumnName = "id"))
+	private List<LieuConsult> mesLieux = new ArrayList<LieuConsult>();
+
 	public Motif() {
 		super();
 	}
-	
-	
-	
+
+	public Motif(Type type, int nbCreneau) {
+		super();
+		this.type = type;
+		this.nbCreneau = nbCreneau;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public Type getType() {
+		return type;
+	}
+
+	public void setType(Type type) {
+		this.type = type;
+	}
+
+	public int getNbCreneau() {
+		return nbCreneau;
+	}
+
+	public void setNbCreneau(int nbCreneau) {
+		this.nbCreneau = nbCreneau;
+	}
+
 	public List<LieuConsult> getMesLieux() {
 		return mesLieux;
 	}
-
-
 
 	public void setMesLieux(List<LieuConsult> mesLieux) {
 		this.mesLieux = mesLieux;
 	}
 
-
-
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
-	public int getVersion() {
-		return version;
-	}
-	public void setVersion(int version) {
-		this.version = version;
-	}
-	public Type getType() {
-		return type;
-	}
-	public void setType(Type type) {
-		this.type = type;
-	}
-	public int getNbCreneau() {
-		return nbCreneau;
-	}
-	public void setNbCreneau(int nbCreneau) {
-		this.nbCreneau = nbCreneau;
-	}
-	
-	
-	
 }
