@@ -1,18 +1,19 @@
 package sopra.doctovid;
 
-import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import sopra.doctovid.model.Admin;
+import sopra.doctovid.model.Adresse;
+import sopra.doctovid.model.Civilite;
 import sopra.doctovid.model.Creneau;
 import sopra.doctovid.model.LieuConsult;
 import sopra.doctovid.model.Motif;
-import sopra.doctovid.model.Civilite;
 import sopra.doctovid.model.Patient;
 import sopra.doctovid.model.Praticien;
 import sopra.doctovid.model.Rdv;
@@ -55,10 +56,22 @@ public class Test1 {
 		admin1.setMdp("oui");
 		
 		LieuConsult lieu1 = new LieuConsult("cabinet");
+		Adresse adr1 = new Adresse("8 rue du cabinet", null, "33700", "Merignac");
+		lieu1.setAdresse(adr1);
+		lieu1 = lieuConsultRepo.save(lieu1);
+		
+		LieuConsult lieu2 = new LieuConsult("Hopital");
+		Adresse adr2 = new Adresse("8 rue de l'Hopital", null, "33700", "Merignac");
+		lieu2.setAdresse(adr2);
+		
+		lieu2 =  lieuConsultRepo.save(lieu2);
 		
 		Creneau creneau1 = new Creneau(new Date(), true);
+		creneau1.setLieuConsult(lieu1);
 		
 		Motif motif1 = new Motif(Type.PremierRendezVous, 2);
+		
+		
 		
 		admin1 = adminRepo.save(admin1);
 		motif1 = motifRepo.save(motif1);
@@ -68,8 +81,14 @@ public class Test1 {
 		Praticien praticien1 = new Praticien("DUPONT", "Michel", Specialite.Généraliste);
 		praticien1 = praticienRepo.save(praticien1);
 		Rdv rdv1 = new Rdv(praticien1, patient1);
+		rdv1.addCreneau(creneau1);
+		rdv1.setPraticien(praticien1);
+		rdv1.setPatient(patient1);
+		rdv1.setMotif(motif1);
 		rdv1 = rdvRepo.save(rdv1);
 
+		
+		
 		creneau1 = creneauRepo.save(creneau1);
 		lieu1 = lieuConsultRepo.save(lieu1);
 		

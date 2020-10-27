@@ -1,5 +1,6 @@
 package sopra.doctovid.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -25,7 +26,7 @@ public class Rdv {
 	@JoinColumn(name = "patient_id")
 	private Patient patient;
 	@OneToMany(mappedBy = "rdv")
-	private List<Creneau> creneaux;
+	private List<Creneau> creneaux = new ArrayList<Creneau>();
 	@ManyToOne
 	@JoinColumn(name = "motif_id")
 	private Motif motif;
