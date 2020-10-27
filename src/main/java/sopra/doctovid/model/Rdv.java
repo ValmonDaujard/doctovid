@@ -2,13 +2,30 @@ package sopra.doctovid.model;
 
 import java.util.List;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Version;
+
 public class Rdv {
 
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Version
 	private int version;
+	@ManyToOne
+	@JoinColumn(name = "praticien_id")
 	private Praticien praticien;
+	@ManyToOne
+	@JoinColumn(name = "patient_id")
 	private Patient patient;
+	@OneToMany(mappedBy = "rdv")
 	private List<Creneau> creneaux;
+	@ManyToOne
+	@JoinColumn(name = "motif_id")
 	private Motif motif;
 	
 	

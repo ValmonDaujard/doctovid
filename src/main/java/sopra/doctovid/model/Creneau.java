@@ -4,13 +4,34 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
+
 public class Creneau {
 
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Version
 	private int version;
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	private Boolean dispo;
+	@ManyToMany
+	@JoinTable(name = "creneau_lieuConsult",
+	joinColumns = @JoinColumn(name = "creneau_id", referencedColumnName = "id"),
+	inverseJoinColumns = @JoinColumn (name = "lieuConsult_id", referencedColumnName = "id"))
 	private List<LieuConsult> lieux  = new ArrayList<LieuConsult>();
+	@ManyToOne
+	@JoinColumn(name = "rdv_id")
+	private Rdv rdv;
 	
 	public Creneau() {
 		super();
@@ -18,6 +39,18 @@ public class Creneau {
 	
 	
 	
+	public Rdv getRdv() {
+		return rdv;
+	}
+
+
+
+	public void setRdv(Rdv rdv) {
+		this.rdv = rdv;
+	}
+
+
+
 	public List<LieuConsult> getLieux() {
 		return lieux;
 	}
