@@ -50,20 +50,16 @@ public class Test1 {
 		admin1.setMail("admin@mail.fr");
 		admin1.setMdp("oui");
 		
-		admin1 = adminRepo.save(admin1);
+		LieuConsult lieu1 = new LieuConsult("cabinet");
 		
 		Creneau creneau1 = new Creneau(new Date(), true);
 		
-		creneau1 = creneauRepo.save(creneau1);
-		
-		LieuConsult lieu1 = new LieuConsult("cabinet");
-		
-		lieu1 = lieuConsultRepo.save(lieu1);
-		
 		Motif motif1 = new Motif(null, 2);
 		
+		admin1 = adminRepo.save(admin1);
 		motif1 = motifRepo.save(motif1);
-		
+		creneau1 = creneauRepo.save(creneau1);
+		lieu1 = lieuConsultRepo.save(lieu1);
 	}
 
 }

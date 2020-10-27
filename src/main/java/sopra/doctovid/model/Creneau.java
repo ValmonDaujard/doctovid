@@ -1,15 +1,11 @@
 package sopra.doctovid.model;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -26,9 +22,9 @@ public class Creneau {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date date;
 	private Boolean dispo;
-	@ManyToMany
-	@JoinTable(name = "creneau_lieuConsult", joinColumns = @JoinColumn(name = "creneau_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "lieuConsult_id", referencedColumnName = "id"))
-	private List<LieuConsult> mesLieux = new ArrayList<LieuConsult>();
+	@ManyToOne
+	@JoinColumn(name = "lieuConsult_id")
+	private LieuConsult lieuConsult;
 	@ManyToOne
 	@JoinColumn(name = "rdv_id")
 	private Rdv rdv;
@@ -83,16 +79,14 @@ public class Creneau {
 		this.rdv = rdv;
 	}
 
-	public List<LieuConsult> getLieux() {
-		return mesLieux;
+	public LieuConsult getLieuConsult() {
+		return lieuConsult;
 	}
 
-	public void setLieux(List<LieuConsult> lieux) {
-		this.mesLieux = lieux;
+	public void setLieuConsult(LieuConsult lieuConsult) {
+		this.lieuConsult = lieuConsult;
 	}
 
-	public void addLieux(LieuConsult lieuConsult) {
-		this.mesLieux.add(lieuConsult);
-	}
+	
 
 }
