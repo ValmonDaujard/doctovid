@@ -38,6 +38,12 @@ public class LieuConsult {
 		this.nom = nom;
 	}
 
+	public LieuConsult(String nom, Adresse adresse) {
+		super();
+		this.nom = nom;
+		this.adresse = adresse;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -77,6 +83,10 @@ public class LieuConsult {
 	public void setPraticiens(List<Praticien> praticiens) {
 		this.praticiens = praticiens;
 	}
+	
+	public void addPraticien(Praticien praticien) {
+		this.praticiens.add(praticien);
+	}
 
 	public List<Motif> getMotifs() {
 		return motifs;
@@ -85,6 +95,10 @@ public class LieuConsult {
 	public void setMotifs(List<Motif> motifs) {
 		this.motifs = motifs;
 	}
+	
+	public void addMotif(Motif motif) {
+		this.motifs.add(motif);
+	}
 
 	public List<Creneau> getCreneaux() {
 		return creneaux;
@@ -92,6 +106,10 @@ public class LieuConsult {
 
 	public void setCreneaux(List<Creneau> creneaux) {
 		this.creneaux = creneaux;
+	}
+	
+	public void addCreneau(Creneau creneau) {
+		this.creneaux.add(creneau);
 	}
 
 }

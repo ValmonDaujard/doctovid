@@ -17,16 +17,14 @@ import sopra.doctovid.model.Patient;
 import sopra.doctovid.model.Praticien;
 import sopra.doctovid.model.Rdv;
 import sopra.doctovid.model.Specialite;
-import sopra.doctovid.persitence.IPatientRepository;
-import sopra.doctovid.persitence.IPraticienRepository;
-import sopra.doctovid.persitence.IRdvRepository;
+import sopra.doctovid.model.Type;
+import sopra.doctovid.persistence.IPatientRepository;
+import sopra.doctovid.persistence.IPraticienRepository;
+import sopra.doctovid.persistence.IRdvRepository;
 import sopra.doctovid.persistence.IAdminRepository;
 import sopra.doctovid.persistence.ICreneauRepository;
 import sopra.doctovid.persistence.ILieuConsultRepository;
 import sopra.doctovid.persistence.IMotifRepository;
-import sopra.doctovid.persistence.IPatientRepository;
-import sopra.doctovid.persistence.IPraticienRepository;
-import sopra.doctovid.persistence.IRdvRepository;
 
 @SpringBootTest
 public class Test1 {
@@ -60,7 +58,7 @@ public class Test1 {
 		
 		Creneau creneau1 = new Creneau(new Date(), true);
 		
-		Motif motif1 = new Motif(null, 2);
+		Motif motif1 = new Motif(Type.PremierRendezVous, 2);
 		
 		admin1 = adminRepo.save(admin1);
 		motif1 = motifRepo.save(motif1);
@@ -74,6 +72,28 @@ public class Test1 {
 
 		creneau1 = creneauRepo.save(creneau1);
 		lieu1 = lieuConsultRepo.save(lieu1);
+		
+		praticien1.addLieu(lieu1);
+		praticien1.addRdv(rdv1);
+		praticien1 = praticienRepo.save(praticien1);
+		patient1.addRdv(rdv1);
+		patient1 = patientRepo.save(patient1);
+		
+		creneau1.setLieuConsult(lieu1);
+		creneau1.setRdv(rdv1);
+		creneau1 = creneauRepo.save(creneau1);
+		
+		rdv1.addCreneau(creneau1);
+		rdv1 = rdvRepo.save(rdv1);
+		
+		lieu1.addCreneau(creneau1);
+		lieu1.addMotif(motif1);
+		lieu1.addPraticien(praticien1);
+		lieu1 = lieuConsultRepo.save(lieu1);
+		
+		motif1.addLieu(lieu1);
+		motif1 = motifRepo.save(motif1);
+		
 	}
 
 }

@@ -79,6 +79,10 @@ public class Rdv {
 	public void setCreneaux(List<Creneau> creneaux) {
 		this.creneaux = creneaux;
 	}
+	
+	public void addCreneau(Creneau creneau) {
+		this.creneaux.add(creneau);
+	}
 
 	public Motif getMotif() {
 		return motif;

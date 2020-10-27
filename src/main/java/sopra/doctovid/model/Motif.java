@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -19,6 +21,7 @@ public class Motif {
 	private Long id;
 	@Version
 	private int version;
+	@Enumerated(EnumType.STRING)
 	private Type type;
 	private int nbCreneau;
 	@ManyToMany
@@ -73,6 +76,10 @@ public class Motif {
 
 	public void setMesLieux(List<LieuConsult> mesLieux) {
 		this.mesLieux = mesLieux;
+	}
+	
+	public void addLieu(LieuConsult lieu) {
+		this.mesLieux.add(lieu);
 	}
 
 }
