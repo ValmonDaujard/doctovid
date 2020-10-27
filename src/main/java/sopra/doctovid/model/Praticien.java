@@ -21,7 +21,7 @@ public class Praticien extends Utilisateur {
 	@Enumerated(EnumType.STRING)
 	private Specialite specialite;
 	@ManyToMany
-	@JoinTable(name = "praticien_lieu_consul", joinColumns = @JoinColumn(name = "praticien_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "lieuConsult_id ", referencedColumnName = "id"))
+	@JoinTable(name = "praticien_lieu_consult", joinColumns = @JoinColumn(name = "praticien_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "lieuConsult_id ", referencedColumnName = "id"))
 	private List<LieuConsult> mesLieux = new ArrayList<LieuConsult>();
 	@OneToMany(mappedBy = "praticien")
 	private List<Rdv> mesRdvs = new ArrayList<Rdv>();
