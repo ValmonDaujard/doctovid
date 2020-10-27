@@ -4,13 +4,29 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Entity
+@DiscriminatorValue("Patient")
 public class Patient extends Utilisateur{
 
 	
 	private String nom;
 	private String prenom;
+	@Enumerated(EnumType.STRING)
 	private Civilite civilite;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern ="dd/MM/yyy")
 	private Date dtNaissance;
+	@OneToMany(mappedBy = "patient")
 	private List<Rdv> mesRdvs = new ArrayList<Rdv>();
 	
 	

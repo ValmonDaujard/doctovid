@@ -3,14 +3,29 @@ package sopra.doctovid.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LieuConsult {
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Version;
 
+@Entity
+public class LieuConsult {
+	
+	@Id
+	@GeneratedValue
 	private Long id;
+	@Version
 	private int version;
 	private String nom;
+	@Embedded
 	private Adresse adresse;
+	@ManyToMany(mappedBy = "mesLieux")
 	private List<Praticien> praticiens  = new ArrayList<Praticien>();
+	@ManyToMany(mappedBy = "mesLieux")
 	private List<Motif> motifs  = new ArrayList<Motif>();
+	@ManyToMany(mappedBy = "mesLieux")
 	private List<Creneau> creneaux  = new ArrayList<Creneau>();
 	
 	

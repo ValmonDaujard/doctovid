@@ -1,6 +1,8 @@
 package sopra.doctovid.model;
 
+import javax.persistence.Embeddable;
 
+@Embeddable
 public class Adresse {
 	
 	private Long id;
