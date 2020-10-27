@@ -1,4 +1,4 @@
-package sopra.doctovid.persitence;
+package sopra.doctovid.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
