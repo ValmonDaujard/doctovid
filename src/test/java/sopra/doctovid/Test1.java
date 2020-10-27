@@ -102,9 +102,6 @@ public class Test1 {
 		creneau1.setRdv(rdv1);
 		creneau1 = creneauRepo.save(creneau1);
 		
-		rdv1.addCreneau(creneau1);
-		rdv1 = rdvRepo.save(rdv1);
-		
 		lieu1.addCreneau(creneau1);
 		lieu1.addMotif(motif1);
 		lieu1.addPraticien(praticien1);
@@ -112,6 +109,10 @@ public class Test1 {
 		
 		motif1.addLieu(lieu1);
 		motif1 = motifRepo.save(motif1);
+		
+		rdv1.addCreneau(creneau1);
+		rdv1.setMotif(motif1);
+		rdv1 = rdvRepo.save(rdv1);
 		
 	}
 
