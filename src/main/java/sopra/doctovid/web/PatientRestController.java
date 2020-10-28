@@ -14,6 +14,5 @@ public class PatientRestController {
 	@Autowired
 	private IPatientRepository patientRepo;
 	
-	@GetMapping
 
 }
