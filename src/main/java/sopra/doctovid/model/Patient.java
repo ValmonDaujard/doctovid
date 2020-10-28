@@ -14,18 +14,25 @@ import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @DiscriminatorValue("Patient")
 public class Patient extends Utilisateur {
 
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
+	@JsonView(Views.ViewCommon.class)
 	private String prenom;
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.ViewCommon.class)
 	private Civilite civilite;
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "dd/MM/yyy")
+	@JsonView(Views.ViewCommon.class)
 	private Date dtNaissance;
 	@OneToMany(mappedBy = "patient")
+	@JsonView(Views.ViewPatient.class)
 	private List<Rdv> mesRdvs = new ArrayList<Rdv>();
 
 	public Patient() {

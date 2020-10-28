@@ -1,16 +1,12 @@
 package sopra.doctovid.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
 @Entity
@@ -24,9 +20,9 @@ public class Motif {
 	@Enumerated(EnumType.STRING)
 	private Type type;
 	private int nbCreneau;
-	@ManyToMany
-	@JoinTable(name = "motif_lieuConsult", joinColumns = @JoinColumn(name = "motif_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "lieuConsult_id", referencedColumnName = "id"))
-	private List<LieuConsult> mesLieux = new ArrayList<LieuConsult>();
+	@ManyToOne
+	@JoinColumn(name = "lieuConsult_id")
+	private LieuConsult lieuConsult;
 
 	public Motif() {
 		super();
@@ -70,16 +66,14 @@ public class Motif {
 		this.nbCreneau = nbCreneau;
 	}
 
-	public List<LieuConsult> getMesLieux() {
-		return mesLieux;
+	public LieuConsult getLieuConsult() {
+		return lieuConsult;
 	}
 
-	public void setMesLieux(List<LieuConsult> mesLieux) {
-		this.mesLieux = mesLieux;
+	public void setLieuConsult(LieuConsult lieuConsult) {
+		this.lieuConsult = lieuConsult;
 	}
+
 	
-	public void addLieu(LieuConsult lieu) {
-		this.mesLieux.add(lieu);
-	}
 
 }

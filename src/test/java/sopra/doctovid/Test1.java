@@ -71,7 +71,7 @@ public class Test1 {
 		
 		Motif motif1 = new Motif(Type.PremierRendezVous, 2);
 		
-		motif1.addLieu(lieu1);
+		motif1.setLieuConsult(lieu1);
 		
 		admin1 = adminRepo.save(admin1);
 		motif1 = motifRepo.save(motif1);

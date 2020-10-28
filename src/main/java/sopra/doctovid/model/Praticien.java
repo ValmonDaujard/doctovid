@@ -12,18 +12,25 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @DiscriminatorValue("Praticien")
 public class Praticien extends Utilisateur {
 
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
+	@JsonView(Views.ViewCommon.class)
 	private String prenom;
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.ViewCommon.class)
 	private Specialite specialite;
 	@ManyToMany
 	@JoinTable(name = "praticien_lieu_consult", joinColumns = @JoinColumn(name = "praticien_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "lieuConsult_id ", referencedColumnName = "id"))
+	@JsonView(Views.ViewCommon.class)
 	private List<LieuConsult> mesLieux = new ArrayList<LieuConsult>();
 	@OneToMany(mappedBy = "praticien")
+	@JsonView(Views.ViewPraticien.class)
 	private List<Rdv> mesRdvs = new ArrayList<Rdv>();
 
 	public Praticien() {

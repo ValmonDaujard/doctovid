@@ -24,7 +24,7 @@ public class LieuConsult {
 	private Adresse adresse;
 	@ManyToMany(mappedBy = "mesLieux")
 	private List<Praticien> praticiens = new ArrayList<Praticien>();
-	@ManyToMany(mappedBy = "mesLieux")
+	@OneToMany(mappedBy = "lieuConsult")
 	private List<Motif> motifs = new ArrayList<Motif>();
 	@OneToMany(mappedBy = "lieuConsult")
 	private List<Creneau> creneaux = new ArrayList<Creneau>();
