@@ -2,12 +2,20 @@ package sopra.doctovid.model;
 
 import javax.persistence.Embeddable;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopra.doctovid.model.Views;
+
 @Embeddable
 public class Adresse {
 	
+	@JsonView(Views.ViewCommon.class)
 	private String rue;
+	@JsonView(Views.ViewCommon.class)
 	private String complement;
+	@JsonView(Views.ViewCommon.class)
 	private String cp;
+	@JsonView(Views.ViewCommon.class)
 	private String ville;
 
 	public Adresse() {

@@ -11,16 +11,23 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import sopra.doctovid.model.Views;
+
 @Entity
 public class LieuConsult {
 
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
+	@JsonView(Views.ViewCommon.class)
 	private String nom;
 	@Embedded
+	@JsonView(Views.ViewCommon.class)
 	private Adresse adresse;
 	@ManyToMany(mappedBy = "mesLieux")
 	private List<Praticien> praticiens = new ArrayList<Praticien>();

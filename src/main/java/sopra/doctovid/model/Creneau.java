@@ -11,22 +11,32 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import sopra.doctovid.model.Views;
+
 @Entity
 public class Creneau {
 
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Temporal(TemporalType.TIMESTAMP)
+	@JsonView(Views.ViewCommon.class)
 	private Date date;
+	@JsonView(Views.ViewCommon.class)
 	private Boolean dispo;
 	@ManyToOne
 	@JoinColumn(name = "lieuConsult_id")
+	@JsonView(Views.ViewCreneau.class)
 	private LieuConsult lieuConsult;
 	@ManyToOne
 	@JoinColumn(name = "rdv_id")
+	@JsonView(Views.ViewCreneau.class)
 	private Rdv rdv;
 
 	public Creneau() {

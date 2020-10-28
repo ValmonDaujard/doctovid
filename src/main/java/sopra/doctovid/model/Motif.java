@@ -9,19 +9,26 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Motif {
 
 	@Id
 	@GeneratedValue
+	@JsonView(Views.ViewCommon.class)
 	private Long id;
 	@Version
+	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Enumerated(EnumType.STRING)
+	@JsonView(Views.ViewMotif.class)
 	private Type type;
+	@JsonView(Views.ViewMotif.class)
 	private int nbCreneau;
 	@ManyToOne
 	@JoinColumn(name = "lieuConsult_id")
+	@JsonView(Views.ViewMotif.class)
 	private LieuConsult lieuConsult;
 
 	public Motif() {
