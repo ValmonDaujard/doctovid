@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,11 +19,13 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.doctovid.model.Praticien;
+//import sopra.doctovid.model.Specialite;
 import sopra.doctovid.model.Views;
 import sopra.doctovid.persistence.IPraticienRepository;
 
 @RestController
 @RequestMapping("/praticien")
+@CrossOrigin("*")
 public class PraticienRestController {
 	
 	@Autowired
@@ -45,6 +48,18 @@ public class PraticienRestController {
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Unable to find resource");
 		}
+	}
+	
+//	@GetMapping("/by-spe/{specialite}")
+//	@JsonView(Views.ViewPraticien.class)
+//	public List<Praticien> findAllBySpecialite(@PathVariable Specialite specialite) {
+//		return praticienRepo.findAllBySpecialite(specialite);
+//	}
+	
+	@GetMapping("/by-ville/{ville}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Praticien> findAllByLieu(@PathVariable String ville) {
+		return praticienRepo.findAllByLieu(ville);
 	}
 	
 	@PostMapping("")

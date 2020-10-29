@@ -4,13 +4,15 @@ public class Views {
 	
 	public static class ViewCommon {}
 	
+	public static class ViewUtilisateur extends ViewCommon{}
+	
 	public static class ViewPatientFull extends ViewCommon {}
 	
 	public static class ViewPatient extends ViewCommon {}
 	
-	public static class ViewPraticienFull extends ViewCommon {}
-	
 	public static class ViewPraticien extends ViewCommon {}
+	
+//	public static class ViewPraticien extends ViewPraticienFull {}
 	
 	public static class ViewRdv extends ViewCommon {}
 	

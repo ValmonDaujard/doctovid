@@ -11,6 +11,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+//import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.doctovid.model.Views;
@@ -26,13 +28,14 @@ public class Creneau {
 	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Temporal(TemporalType.TIMESTAMP)
+//	@DateTimeFormat(pattern = "dd/MM/yyy'T'HH:mm")
 	@JsonView(Views.ViewCommon.class)
 	private Date date;
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewCreneau.class)
 	private Boolean dispo;
 	@ManyToOne
 	@JoinColumn(name = "lieuConsult_id")
-	@JsonView(Views.ViewCreneau.class)
+	@JsonView(Views.ViewCommon.class)
 	private LieuConsult lieuConsult;
 	@ManyToOne
 	@JoinColumn(name = "rdv_id")

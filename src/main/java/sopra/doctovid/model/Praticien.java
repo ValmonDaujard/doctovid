@@ -27,7 +27,7 @@ public class Praticien extends Utilisateur {
 	private Specialite specialite;
 	@ManyToMany
 	@JoinTable(name = "praticien_lieu_consult", joinColumns = @JoinColumn(name = "praticien_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "lieuConsult_id ", referencedColumnName = "id"))
-	@JsonView(Views.ViewCommon.class)
+	@JsonView(Views.ViewPraticien.class)
 	private List<LieuConsult> mesLieux = new ArrayList<LieuConsult>();
 	@OneToMany(mappedBy = "praticien")
 	@JsonView(Views.ViewPraticien.class)
