@@ -49,6 +49,18 @@ public class RdvRestController {
 		}
 	}
 	
+	@GetMapping("/by-patient-passes/{id}")
+	@JsonView(Views.ViewRdv.class)
+	public List<Rdv> findAllByPatientAndPasses(@PathVariable Long id){
+		return rdvRepo.findAllByPatientAndPasses(id);
+	}
+	
+	@GetMapping("/by-patient-planifies/{id}")
+	@JsonView(Views.ViewRdv.class)
+	public List<Rdv> findAllByPatientPlanifies(@PathVariable Long id){
+		return rdvRepo.findAllByPatientPlanifies(id);
+	}
+	
 	@PostMapping("")
 	public Rdv create(@RequestBody Rdv rdv) {
 		rdv = rdvRepo.save(rdv);
