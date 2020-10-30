@@ -11,11 +11,11 @@ import sopra.doctovid.model.Rdv;
 public interface IRdvRepository extends JpaRepository<Rdv, Long>{
 
 	//Histo des rdvs par patient
-	@Query("select r from Rdv r join r.creneaux cr where cr.date > current_date and r.patient.id = :id")
+	@Query("select r from Rdv r join r.creneaux cr where cr.date < current_date and r.patient.id = :id")
 	List<Rdv> findAllByPatientAndPasses(@Param("id") Long id);
 	
 	//Histo des rdvs par patient
-	@Query("select r from Rdv r join r.creneaux cr where cr.date < current_date and r.patient.id = :id")
+	@Query("select r from Rdv r join r.creneaux cr where cr.date > current_date and r.patient.id = :id")
 	List<Rdv> findAllByPatientPlanifies(@Param("id") Long id);
 }
 

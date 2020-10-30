@@ -19,7 +19,6 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.doctovid.model.Praticien;
-//import sopra.doctovid.model.Specialite;
 import sopra.doctovid.model.Views;
 import sopra.doctovid.persistence.IPraticienRepository;
 

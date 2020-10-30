@@ -20,6 +20,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.doctovid.model.Creneau;
 import sopra.doctovid.model.Views;
+import sopra.doctovid.model.Views.ViewCommon;
+import sopra.doctovid.model.Views.ViewCreneau;
 import sopra.doctovid.persistence.ICreneauRepository;
 
 
@@ -50,6 +52,11 @@ public class CreneauRestController {
 		}
 	}
 	
+	@GetMapping("/by-rdv/{id}")
+	@JsonView(ViewCommon.class)
+	public List<Creneau> findCreneauByRdv(@PathVariable Long id){
+		return creneauRepo.findCreneauxByRdv(id);
+	}
 	
 	
 	@PostMapping("")
