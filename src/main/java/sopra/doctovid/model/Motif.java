@@ -22,13 +22,13 @@ public class Motif {
 	@JsonView(Views.ViewCommon.class)
 	private int version;
 	@Enumerated(EnumType.STRING)
-	@JsonView(Views.ViewMotif.class)
+	@JsonView(Views.ViewCommon.class)
 	private Type type;
-	@JsonView(Views.ViewMotif.class)
+	@JsonView(Views.ViewCommon.class)
 	private int nbCreneau;
 	@ManyToOne
 	@JoinColumn(name = "lieuConsult_id")
-	@JsonView(Views.ViewMotif.class)
+	@JsonView(Views.ViewCommon.class)
 	private LieuConsult lieuConsult;
 
 	public Motif() {

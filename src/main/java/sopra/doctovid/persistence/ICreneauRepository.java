@@ -6,4 +6,5 @@ import sopra.doctovid.model.Creneau;
 
 public interface ICreneauRepository extends JpaRepository<Creneau, Long>{
 
+	
 }
