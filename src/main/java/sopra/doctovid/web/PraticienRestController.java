@@ -62,6 +62,18 @@ public class PraticienRestController {
 		return praticienRepo.findAllByLieu(ville);
 	}
 	
+	@GetMapping("/by-nom/{nom}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Praticien> findAllByNom(@PathVariable String nom) {
+		return praticienRepo.findAllByNom(nom);
+	}
+	
+	@GetMapping("/by-nom-ville/{nom}:{ville}")
+	@JsonView(Views.ViewCommon.class)
+	public List<Praticien> findAllByNomAndLieu(@PathVariable String nom, @PathVariable String ville) {
+		return praticienRepo.findAllByNomAndLieu(nom,ville);
+	}
+	
 	@PostMapping("")
 	public Praticien create(@RequestBody Praticien praticien) {
 		praticien = praticienRepo.save(praticien);

@@ -78,7 +78,7 @@ public class Test1 {
 		
 		Patient patient1 = new Patient("Doe", "John", Civilite.M, sdf.parse("15/05/2020"));
 		patient1 = patientRepo.save(patient1);
-		Praticien praticien1 = new Praticien("DUPONT", "Michel", Specialite.Généraliste);
+		Praticien praticien1 = new Praticien("DUPONT", "Michel", Specialite.Generaliste);
 		praticien1 = praticienRepo.save(praticien1);
 		Rdv rdv1 = new Rdv(praticien1, patient1);
 		rdv1.addCreneau(creneau1);
